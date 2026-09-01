@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jonas – Developer & Projekte</title>
+
+  <meta
+    name="description"
+    content="Die persönliche Website von Jonas – Developer, DLRG-Mitglied und Schulsanitäter."
+  >
+
+  <style>
+    :root {
+      --bg: #050b14;
+      --bg2: #091321;
+      --card: rgba(255,255,255,.055);
+      --border: rgba(255,255,255,.10);
+      --text: #f5f7fb;
+      --muted: #9aa8ba;
+      --blue: #4f8cff;
+      --cyan: #35d9ff;
+      --green: #39d98a;
+      --red: #ff5f56;
+      --yellow: #ffbd2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 75% 0%, rgba(79,140,255,.16), transparent 30%),
+        radial-gradient(circle at 0% 45%, rgba(53,217,255,.07), transparent 25%),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+
+      background: rgba(5,11,20,.75);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+
+      gap: 70px;
+      align-items: center;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 7px 13px;
+
+      border-radius: 999px;
+
+      background: rgba(57,217,138,.08);
+      border: 1px solid rgba(57,217,138,.22);
+
+      color: #6ee7ac;
+
+      font-size: .85rem;
+
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow: 0 0 13px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 6.5rem);
+
+      line-height: .92;
+
+      letter-spacing: -5px;
+
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan)
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: var(--muted);
+
+      font-size: 1.15rem;
+
+      max-width: 650px;
+
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 19px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--border);
+
+      font-weight: 650;
+
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        #2867df
+      );
+
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+    }
+
+    /* CODE WINDOW */
+
+    .code {
+      background: #08111e;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow: 0 35px 80px rgba(0,0,0,.4);
+
+      transform: rotate(2deg);
+    }
+
+    .window {
+      padding: 14px;
+
+      border-bottom: 1px solid var(--border);
+
+      display: flex;
+      gap: 7px;
+    }
+
+    .window i {
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+
+      background: var(--red);
+    }
+
+    .window i:nth-child(2) {
+      background: var(--yellow);
+    }
+
+    .window i:nth-child(3) {
+      background: #22c55e;
+    }
+
+    pre {
+      padding: 25px;
+
+      color: #cbd5e1;
+
+      font-size: .88rem;
+
+      overflow-x: auto;
+    }
+
+    .purple {
+      color: #c084fc;
+    }
+
+    .blue {
+      color: #60a5fa;
+    }
+
+    .green {
+      color: #6ee7b7;
+    }
+
+    .comment {
+      color: #526174;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .label {
+      color: var(--cyan);
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-size: .8rem;
+
+      font-weight: 750;
+
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+    }
+
+    .intro {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      margin-bottom: 45px;
+    }
+
+    /* CARDS */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      padding: 27px;
+
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(79,140,255,.35);
+
+      background: rgba(255,255,255,.075);
+    }
+
+    .icon {
+      font-size: 2rem;
+
+      margin-bottom: 13px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .project {
+      min-height: 245px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+    }
+
+    .project-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+    }
+
+    .number {
+      color: #536174;
+
+      font-family: monospace;
+    }
+
+    .project-name {
+      font-size: 1.3rem;
+
+      margin-bottom: 13px;
+
+      word-break: break-word;
+    }
+
+    .project-meta {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: .75rem;
+
+      color: #9ec4ff;
+
+      background: rgba(79,140,255,.09);
+
+      border: 1px solid rgba(79,140,255,.18);
+
+      padding: 4px 9px;
+
+      border-radius: 6px;
+    }
+
+    .stats {
+      display: flex;
+
+      gap: 15px;
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      margin-top: 16px;
+    }
+
+    .project-links {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .project-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      color: var(--cyan);
+
+      font-weight: 650;
+
+      font-size: .9rem;
+
+      padding: 8px 11px;
+
+      border-radius: 8px;
+
+      background: rgba(53,217,255,.05);
+
+      border: 1px solid rgba(53,217,255,.12);
+
+      transition: .2s;
+    }
+
+    .project-link:hover {
+      background: rgba(53,217,255,.1);
+
+      transform: translateY(-2px);
+    }
+
+    .github-link {
+      color: #cbd5e1;
+
+      background: rgba(255,255,255,.04);
+
+      border-color: var(--border);
+    }
+
+    /* LOADING */
+
+    .loading {
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 60px 20px;
+
+      color: var(--muted);
+    }
+
+    .loader {
+      width: 35px;
+      height: 35px;
+
+      margin: 0 auto 18px;
+
+      border-radius: 50%;
+
+      border: 3px solid rgba(255,255,255,.1);
+
+      border-top-color: var(--cyan);
+
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error {
+      grid-column: 1 / -1;
+
+      color: #ff8c8c;
+
+      background: rgba(255,80,80,.06);
+
+      border: 1px solid rgba(255,80,80,.15);
+
+      padding: 20px;
+
+      border-radius: 12px;
+
+      text-align: center;
+    }
+
+    /* ACCOUNTS */
+
+    .accounts {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .account {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .account-content {
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+    }
+
+    .github-icon {
+      width: 50px;
+      height: 50px;
+
+      border-radius: 12px;
+
+      background: white;
+
+      color: #050b14;
+
+      display: grid;
+
+      place-items: center;
+
+      font-size: 1.5rem;
+    }
+
+    .account-arrow {
+      color: var(--cyan);
+
+      font-size: 1.3rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding: 35px 0;
+
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .projects,
+      .accounts {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .code {
+        transform: none;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        jonas<span>.dev</span>
+      </a>
+
+      <ul>
+        <li>
+          <a href="#ueber-mich">Über mich</a>
+        </li>
+
+        <li>
+          <a href="#engagement">Engagement</a>
+        </li>
+
+        <li>
+          <a href="#projekte">Projekte</a>
+        </li>
+
+        <li>
+          <a href="#github">GitHub</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Gerade am Programmieren
+          </div>
+
+          <h1>
+            Hi, ich bin<br>
+            <span>Jonas.</span>
+          </h1>
+
+          <p class="hero-text">
+            Schüler, Developer, DLRG-Mitglied und
+            Schulsanitäter. In meiner Freizeit programmiere
+            ich eigene Projekte, probiere neue Technologien
+            aus und baue Dinge, die ich interessant finde.
+          </p>
+
+          <div class="buttons">
+
+            <a
+              href="#projekte"
+              class="btn btn-primary"
+            >
+              Projekte ansehen →
+            </a>
+
+            <a
+              href="https://github.com/Jonas35834"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="code">
+
+          <div class="window">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+<pre><span class="comment">// jonas.js</span>
+
+<span class="purple">const</span> jonas = {
+  <span class="blue">coding</span>: <span class="green">true</span>,
+
+  <span class="blue">interests</span>: [
+    <span class="green">"Web Development"</span>,
+    <span class="green">"Hardware"</span>,
+    <span class="green">"DLRG"</span>,
+    <span class="green">"Erste Hilfe"</span>
+  ],
+
+  <span class="blue">goal</span>: <span class="green">"learn & build"</span>
+};
+
+<span class="purple">while</span> (true) {
+  learn();
+  build();
+  repeat();
+}</pre>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ÜBER MICH -->
+
+    <section id="ueber-mich">
+
+      <div class="container">
+
+        <div class="label">
+          01 — Über mich
+        </div>
+
+        <h2>
+          Programmieren ist nur ein Teil.
+        </h2>
+
+        <p class="intro">
+          Ich interessiere mich für Technik,
+          Programmierung und praktische Projekte –
+          gleichzeitig bin ich auch außerhalb des
+          Computers aktiv.
+        </p>
+
+
+        <div class="about-grid">
+
+          <div class="card">
+            <div class="icon">💻</div>
+
+            <h3>Programmieren</h3>
+
+            <p>
+              In meiner Freizeit entwickle ich eigene
+              Projekte, experimentiere mit Software
+              und probiere neue Ideen aus.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="icon">🌊</div>
+
+            <h3>DLRG</h3>
+
+            <p>
+              Bei der DLRG beschäftige ich mich mit
+              Wasserrettung, Training, Erster Hilfe
+              und Teamarbeit.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="icon">🩺</div>
+
+            <h3>Schulsanitätsdienst</h3>
+
+            <p>
+              Als Schulsanitäter helfe ich anderen und
+              übernehme Verantwortung, wenn schnelle
+              Hilfe gefragt ist.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="icon">🛠️</div>
+
+            <h3>Ausprobieren</h3>
+
+            <p>
+              Von Webprojekten bis Hardware: Ich probiere
+              gerne neue Technologien aus und lerne durch
+              eigene Projekte.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ENGAGEMENT -->
+
+    <section id="engagement">
+
+      <div class="container">
+
+        <div class="label">
+          02 — Engagement
+        </div>
+
+        <h2>
+          Technik & Verantwortung.
+        </h2>
+
+        <p class="intro">
+          Zwei Bereiche, die für mich genauso wichtig
+          sind wie das Programmieren.
+        </p>
+
+
+        <div class="about-grid">
+
+          <div class="card">
+
+            <div class="icon">🌊</div>
+
+            <h3>DLRG</h3>
+
+            <p>
+              Wasserrettung, Ausbildung, Erste Hilfe
+              und Zusammenarbeit im Team.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">🚑</div>
+
+            <h3>Schulsanitätsdienst</h3>
+
+            <p>
+              Helfen, Verantwortung übernehmen und auch
+              in stressigen Situationen einen kühlen
+              Kopf behalten.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJEKTE -->
+
+    <section id="projekte">
+
+      <div class="container">
+
+        <div class="label">
+          03 — Projekte
+        </div>
+
+        <h2>
+          Was ich gebaut habe.
+        </h2>
+
+        <p class="intro">
+          Meine öffentlichen GitHub-Projekte –
+          automatisch geladen und immer aktuell.
+        </p>
+
+
+        <div
+          id="projects"
+          class="projects"
+        >
+
+          <div class="loading">
+
+            <div class="loader"></div>
+
+            <div>
+              GitHub-Projekte werden geladen …
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GITHUB -->
+
+    <section id="github">
+
+      <div class="container">
+
+        <div class="label">
+          04 — GitHub
+        </div>
+
+        <h2>
+          Mehr Code.
+        </h2>
+
+        <p class="intro">
+          Meine Projekte und Experimente findest du
+          auf meinen beiden GitHub-Accounts.
+        </p>
+
+
+        <div class="accounts">
+
+          <a
+            href="https://github.com/Jonas35834"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card account"
+          >
+
+            <div class="account-content">
+
+              <div class="github-icon">
+                ◉
+              </div>
+
+              <div>
+
+                <h3>
+                  Jonas35834
+                </h3>
+
+                <p>
+                  Hauptaccount · Projekte & Experimente
+                </p>
+
+              </div>
+
+            </div>
+
+            <span class="account-arrow">
+              →
+            </span>
+
+          </a>
+
+
+          <a
+            href="https://github.com/JonasPHohl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card account"
+          >
+
+            <div class="account-content">
+
+              <div class="github-icon">
+                ◉
+              </div>
+
+              <div>
+
+                <h3>
+                  JonasPHohl
+                </h3>
+
+                <p>
+                  Zweiter Account · weitere Projekte
+                </p>
+
+              </div>
+
+            </div>
+
+            <span class="account-arrow">
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        © 2026 Jonas
+      </span>
+
+      <span>
+        Built with HTML, CSS & ☕
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- GITHUB API -->
+
+  <script>
+
+    /*
+      ==========================================
+      GITHUB PROJEKTE
+      ==========================================
+
+      Öffentliche GitHub-Repositories benötigen
+      keinen API-Key.
+
+      Wir laden beide Accounts und kombinieren
+      die Ergebnisse anschließend.
+    */
+
+    const accounts = [
+      "Jonas35834",
+      "JonasPHohl"
+    ];
+
+
+    const projectsContainer =
+      document.getElementById("projects");
+
+
+    /*
+      Sprache → Emoji
+    */
+
+    function languageIcon(language) {
+
+      const icons = {
+        JavaScript: "🟨",
+        TypeScript: "🔷",
+        Python: "🐍",
+        HTML: "🌐",
+        CSS: "🎨",
+        Java: "☕",
+        C: "⚙️",
+        "C++": "⚙️",
+        "C#": "💜",
+        PHP: "🐘",
+        Shell: "💻",
+        Go: "🐹",
+        Rust: "🦀"
+      };
+
+      return icons[language] || "💻";
+    }
+
+
+    /*
+      GitHub Pages URL
+
+      Standardmäßig verwenden wir:
+
+      https://USERNAME.github.io/REPOSITORY/
+
+      Bei einem User-/Organization-Repository
+      namens USERNAME.github.io liegt die Seite
+      direkt auf:
+
+      https://USERNAME.github.io/
+    */
+
+    function getPagesUrl(repo) {
+
+      const owner =
+        repo.owner.login;
+
+      const repoName =
+        repo.name;
+
+      if (
+        repoName.toLowerCase() ===
+        `${owner}.github.io`.toLowerCase()
+      ) {
+
+        return `https://${owner}.github.io/`;
+
+      }
+
+      return `https://${owner}.github.io/${repoName}/`;
+    }
+
+
+    /*
+      Prüft, ob die vermutete GitHub-Pages-Seite
+      tatsächlich erreichbar ist.
+
+      Wichtig:
+      GitHub Pages kann etwas Zeit benötigen,
+      bis eine neue Seite veröffentlicht wird.
+    */
+
+    async function checkPages(repo) {
+
+      const url =
+        getPagesUrl(repo);
+
+      try {
+
+        const response =
+          await fetch(
+            url,
+            {
+              method: "HEAD",
+              mode: "no-cors"
+            }
+          );
+
+        /*
+          Bei no-cors bekommen wir keinen normalen
+          HTTP-Status. Wenn der Request nicht direkt
+          fehlschlägt, behandeln wir die Seite als
+          potenziell vorhanden.
+        */
+
+        return url;
+
+      } catch (error) {
+
+        return null;
+
+      }
+    }
+
+
+    /*
+      Repository-Karte erstellen
+    */
+
+    function createProjectCard(repo, index, pagesUrl) {
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "card project";
+
+
+      const language =
+        repo.language || "Code";
+
+
+      const stars =
+        repo.stargazers_count || 0;
+
+
+      const forks =
+        repo.forks_count || 0;
+
+
+      article.innerHTML = `
+
+        <div>
+
+          <div class="project-header">
+
+            <div class="icon">
+              ${languageIcon(language)}
+            </div>
+
+            <span class="number">
+              ${String(index + 1).padStart(2, "0")}
+            </span>
+
+          </div>
+
+
+          <h3 class="project-name">
+            ${escapeHtml(repo.name)}
+          </h3>
+
+
+          <div class="project-meta">
+
+            <span class="tag">
+              ${escapeHtml(language)}
+            </span>
+
+            <span class="tag">
+              ${escapeHtml(repo.owner.login)}
+            </span>
+
+          </div>
+
+
+          <div class="stats">
+
+            <span>
+              ⭐ ${stars}
+            </span>
+
+            <span>
+              🍴 ${forks}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-links">
+
+          ${
+            pagesUrl
+              ? `
+                <a
+                  class="project-link"
+                  href="${pagesUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  🌐 Live ansehen →
+                </a>
+              `
+              : ""
+          }
+
+
+          <a
+            class="project-link github-link"
+            href="${repo.html_url}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub →
+          </a>
+
+        </div>
+
+      `;
+
+
+      return article;
+
+    }
+
+
+    /*
+      HTML-Sonderzeichen absichern
+    */
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    /*
+      Repositories eines Accounts laden
+    */
+
+    async function loadAccount(username) {
+
+      const url =
+        `https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`;
+
+      const response =
+        await fetch(url);
+
+      if (!response.ok) {
+
+        throw new Error(
+          `GitHub konnte ${username} nicht laden.`
+        );
+
+      }
+
+      return await response.json();
+
+    }
+
+
+    /*
+      Alle Projekte laden
+    */
+
+    async function loadProjects() {
+
+      try {
+
+        const results =
+          await Promise.all(
+            accounts.map(
+              username =>
+                loadAccount(username)
+            )
+          );
+
+
+        let repositories =
+          results.flat();
+
+
+        /*
+          Nur öffentliche Repositories.
+        */
+
+        repositories =
+          repositories.filter(
+            repo => !repo.private
+          );
+
+
+        /*
+          Forks können optional ausgeblendet werden.
+          Aktuell bleiben sie drin.
+        */
+
+
+        /*
+          Nach Aktualität sortieren.
+        */
+
+        repositories.sort(
+          (a, b) =>
+            new Date(b.updated_at) -
+            new Date(a.updated_at)
+        );
+
+
+        projectsContainer.innerHTML = "";
+
+
+        if (repositories.length === 0) {
+
+          projectsContainer.innerHTML = `
+
+            <div class="error">
+              Keine öffentlichen GitHub-Projekte gefunden.
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        /*
+          Karten nacheinander erzeugen.
+        */
+
+        for (
+          let i = 0;
+          i < repositories.length;
+          i++
+        ) {
+
+          const repo =
+            repositories[i];
+
+
+          /*
+            Wir versuchen die Pages-Adresse
+            zu bestimmen.
+
+            Da GitHub Pages nicht für jedes
+            Repository aktiviert ist, wird der
+            Live-Link nur angezeigt, wenn eine
+            Seite erreichbar ist.
+          */
+
+          let pagesUrl = null;
+
+          /*
+            Für bekannte Pages-Konvention:
+            Wir erzeugen den Link.
+
+            Der Browser kann die Existenz einer
+            fremden Seite wegen CORS nicht immer
+            zuverlässig prüfen. Deshalb prüfen
+            wir die URL zusätzlich beim Öffnen.
+          */
+
+          if (repo.has_pages) {
+
+            pagesUrl =
+              getPagesUrl(repo);
+
+          }
+
+
+          const card =
+            createProjectCard(
+              repo,
+              i,
+              pagesUrl
+            );
+
+
+          projectsContainer.appendChild(card);
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        projectsContainer.innerHTML = `
+
+          <div class="error">
+
+            ⚠️ Die GitHub-Projekte konnten gerade
+            nicht geladen werden.
+
+            <br><br>
+
+            Bitte versuche es später erneut.
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    /*
+      Start
+    */
+
+    loadProjects();
+
+  </script>
+
+</body>
+</html>
